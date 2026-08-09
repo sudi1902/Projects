@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cottage Core — A Sweet New Spin on a Protein Packed Dairy Product</title>
+<meta name="description" content="Cottage Core is a sweet new spin on a protein packed dairy product. Current flavor: Strawberry Cheesecake. Launching soon — join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Oswald:wght@400;500;600;700&family=Yellowtail&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#7b1e3a;           /* Cottage Core burgundy (plays the role of Cotto's red) */
+    --red-deep:#5c132b;
+    --cream:#f6ecd8;         /* warm retro cream */
+    --paper:#fbf4e4;
+    --blue:#a9cdd9;          /* sticker / club-band blue */
+    --blue-deep:#8db7c6;
+    --pink:#e77f9c;          /* strawberry cheesecake */
+    --pink-soft:#f2a0b5;
+    --peach:#f2a482;
+    --logo:"Bungee","Arial Black",sans-serif;          /* actual brand logo font */
+    --cond:"Oswald","Arial Narrow",sans-serif;         /* condensed retro caps */
+    --script:"Yellowtail",cursive;                     /* script accent */
+    --body:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  ::selection{background:var(--red);color:var(--cream)}
+  body{background:var(--cream);color:var(--red);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em}
+
+  /* ---------- header (solid red bar, like Cotto) ---------- */
+  header.site{position:sticky;top:0;z-index:60;background:var(--red);box-shadow:0 2px 0 rgba(0,0,0,.15)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:var(--logo);color:var(--cream);text-decoration:none;font-size:clamp(15px,2vw,21px);line-height:.95;justify-self:start}
+  .nav-links{display:flex;gap:clamp(14px,3vw,34px);justify-self:center}
+  .nav-links a{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-weight:600;
+    color:var(--cream);text-decoration:none;font-size:15px;position:relative;
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--cream);transition:right .25s}
+  .nav-links a:hover::after{right:0}
+  .nav-cta{justify-self:end}
+  .pill{
+    display:inline-block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-weight:600;
+    background:var(--cream);color:var(--red);border:none;border-radius:999px;
+    padding:10px 22px;font-size:14px;text-decoration:none;cursor:pointer;
+    transition:transform .15s,box-shadow .15s;box-shadow:0 3px 0 rgba(0,0,0,.2);
+  }
+  .pill:hover{transform:translateY(-2px);box-shadow:0 5px 0 rgba(0,0,0,.2)}
+  .pill.red{background:var(--red);color:var(--cream);box-shadow:0 3px 0 var(--red-deep)}
+  @media(max-width:760px){
+    .nav{grid-template-columns:auto 1fr}
+    .nav-links{display:none}
+  }
+
+  /* ---------- hero: full-bleed "photo" + giant wordmark ---------- */
+  .hero{
+    position:relative;color:var(--cream);text-align:center;
+    padding:clamp(60px,9vw,120px) 0 clamp(60px,8vw,100px);
+    background:
+      radial-gradient(52vw 40vw at 18% 82%, rgba(231,127,156,.5), transparent 60%),
+      radial-gradient(46vw 36vw at 84% 22%, rgba(242,164,130,.38), transparent 62%),
+      radial-gradient(60vw 46vw at 68% 88%, rgba(58,15,30,.75), transparent 68%),
+      linear-gradient(160deg,#5f1830, #7b1e3a 46%, #4a1024);
+    overflow:hidden;
+  }
+  .hero::before{ /* soft dessert-swirl texture */
+    content:"";position:absolute;inset:0;opacity:.16;
+    background:repeating-radial-gradient(circle at 50% 130%, transparent 0 60px, rgba(246,236,216,.25) 60px 62px);
+  }
+  .hero .wrap{position:relative}
+  .giant-mark{
+    font-family:var(--logo);line-height:.88;letter-spacing:.01em;
+    font-size:clamp(64px,12.4vw,178px);
+    text-shadow:0 6px 0 rgba(0,0,0,.18);
+    animation:rise .8s .1s both;
+  }
+  .hero .sub{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.22em;font-weight:600;
+    font-size:clamp(14px,2.2vw,24px);margin-top:26px;animation:rise .8s .3s both;
+  }
+  .hero .cta-row{margin-top:34px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;animation:rise .8s .45s both}
+  .hero .pill{font-size:16px;padding:14px 34px}
+  @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+  /* scalloped stickers (Cotto-style wavy blobs) */
+  .blob{
+    position:absolute;z-index:5;display:grid;place-items:center;text-align:center;
+    width:var(--s,170px);height:var(--s,170px);
+    filter:drop-shadow(3px 4px 0 rgba(0,0,0,.25));
+    animation:float 6s ease-in-out infinite;
+  }
+  .blob svg{position:absolute;inset:0;width:100%;height:100%}
+  .blob .t{
+    position:relative;font-family:var(--cond);text-transform:uppercase;font-weight:700;line-height:1.15;
+    color:var(--red);font-size:calc(var(--s,170px)*.098);letter-spacing:.04em;padding:0 22%;
+    transform:rotate(var(--r,-8deg));
+  }
+  .blob .t small{display:block;font-size:.62em;letter-spacing:.14em;font-weight:600}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--tilt,0deg))}50%{transform:translateY(-12px) rotate(var(--tilt,0deg))}}
+  @media(max-width:900px){.blob{display:none}}
+
+  /* ---------- awning band + flavor cards ---------- */
+  .awning{
+    background:
+      repeating-linear-gradient(90deg, var(--red) 0 90px, var(--blue) 90px 180px);
+    padding:clamp(50px,7vw,90px) 0 clamp(60px,7vw,100px);
+    position:relative;
+  }
+  .awning::before{content:"";position:absolute;inset:0;background:rgba(123,30,58,.12)}
+  .awning .wrap{position:relative}
+  .awning h2{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-weight:600;
+    color:var(--cream);text-align:center;font-size:clamp(30px,4.6vw,54px);
+    margin-bottom:clamp(34px,5vw,60px);text-shadow:0 3px 0 rgba(0,0,0,.2);
+  }
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+  .fcard{
+    background:var(--paper);padding:34px 26px 30px;text-align:center;
+    display:flex;flex-direction:column;gap:14px;align-items:center;
+    box-shadow:0 8px 0 rgba(0,0,0,.22);
+    transition:transform .2s;
+  }
+  .fcard:hover{transform:translateY(-8px)}
+  .fcard .tub{width:min(240px,72%);filter:drop-shadow(0 12px 0 rgba(92,19,43,.14));transition:transform .3s}
+  .fcard:hover .tub{transform:rotate(-2deg) scale(1.04)}
+  .fcard h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-weight:700;font-size:24px}
+  .fcard .status{font-family:var(--script);font-size:24px;color:var(--pink);margin-top:-8px}
+  .fcard p{font-size:15px;font-weight:500;max-width:34ch}
+  .fcard .pill{margin-top:auto}
+
+  /* ---------- meet section ---------- */
+  .meet{padding:clamp(70px,9vw,120px) 0;position:relative;overflow:hidden}
+  .meet .script-head{
+    font-family:var(--script);font-size:clamp(52px,8.6vw,108px);line-height:1;
+    transform:rotate(-4deg);margin-bottom:clamp(30px,4vw,50px);
+  }
+  .meet-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:34px;align-items:center}
+  @media(max-width:960px){.meet-grid{grid-template-columns:1fr;text-align:center}}
+  .eatwith{
+    background:var(--blue);border-radius:44px;padding:36px 30px;color:var(--red);
+    box-shadow:6px 7px 0 rgba(123,30,58,.35);transform:rotate(-2deg);
+  }
+  .eatwith .sh{font-family:var(--script);font-size:34px;color:var(--paper);text-shadow:1px 2px 0 rgba(123,30,58,.35)}
+  .eatwith ul{list-style:none;margin-top:14px}
+  .eatwith li{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:clamp(20px,2.2vw,27px);line-height:1.4;color:var(--paper)}
+  .meet-art{display:grid;place-items:center}
+  .meet-art svg{width:min(360px,90%)}
+  .checks{display:flex;flex-direction:column;gap:22px}
+  .checks .chk{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+    font-size:clamp(19px,2vw,25px);line-height:1.3;
+  }
+  .checks .chk::before{content:"✓ ";font-weight:700}
+  .checks .note{font-size:15.5px;font-weight:500;line-height:1.6;text-transform:none;letter-spacing:0;font-family:var(--body)}
+  .meet .blob{animation-duration:7s}
+
+  /* ---------- testimonials ---------- */
+  .quotes{background:var(--red);color:var(--cream);padding:clamp(60px,8vw,100px) 0;position:relative;overflow:hidden}
+  .quotes::before{
+    content:"";position:absolute;inset:0;opacity:.08;
+    background:repeating-linear-gradient(90deg,var(--cream) 0 90px,transparent 90px 180px);
+  }
+  .quotes .wrap{position:relative}
+  .quotes h2{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-weight:600;font-size:clamp(28px,4.2vw,48px);margin-bottom:8px}
+  .quotes .sh{font-family:var(--script);font-size:clamp(26px,3.4vw,40px);color:var(--blue);margin-bottom:38px;display:block;transform:rotate(-2deg);transform-origin:left}
+  .q-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+  .quote{
+    background:var(--paper);color:var(--red);border-radius:26px;padding:34px 28px;
+    box-shadow:0 8px 0 rgba(0,0,0,.25);display:flex;flex-direction:column;gap:16px;
+    transition:transform .2s;
+  }
+  .quote:nth-child(2){transform:rotate(1deg)}
+  .quote:nth-child(3){transform:rotate(-1deg)}
+  .quote:hover{transform:translateY(-6px)}
+  .quote p{font-weight:700;font-size:18.5px;line-height:1.45;flex:1}
+  .quote p::before{content:"“"}
+  .quote p::after{content:"”"}
+  .quote cite{font-style:normal;font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:13px;color:var(--pink)}
+
+  /* ---------- block-print snack band ---------- */
+  .prints{padding:clamp(60px,8vw,100px) 0;text-align:center;background:var(--paper)}
+  .prints h2{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:clamp(22px,3vw,34px)}
+  .prints .pill{margin-top:18px}
+  .print-row{display:flex;justify-content:center;align-items:center;gap:clamp(20px,5vw,70px);margin-top:clamp(30px,5vw,56px);flex-wrap:wrap}
+  .print-row svg{height:clamp(70px,11vw,150px);width:auto;transition:transform .3s}
+  .print-row svg:hover{transform:rotate(-5deg) scale(1.08)}
+
+  /* ---------- waitlist club band ---------- */
+  .club{
+    background:var(--blue);color:var(--red);padding:clamp(56px,7vw,90px) 0 clamp(50px,6vw,70px);
+    border-top:14px solid transparent;position:relative;text-align:center;
+  }
+  .club::before{ /* diagonal candy-stripe top edge */
+    content:"";position:absolute;top:0;left:0;right:0;height:14px;margin-top:-14px;
+    background:repeating-linear-gradient(-45deg,var(--red) 0 18px,var(--paper) 18px 36px);
+  }
+  .club h2{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:clamp(30px,4.6vw,52px);color:var(--paper);text-shadow:1px 2px 0 rgba(123,30,58,.35)}
+  .club h2 .sc{font-family:var(--script);text-transform:none;letter-spacing:0;font-size:1.15em;vertical-align:-.08em;padding-left:8px}
+  .club p{max-width:520px;margin:14px auto 0;font-weight:600;font-size:16px}
+  .wl-form{margin:34px auto 0;display:flex;gap:22px;max-width:640px;flex-wrap:wrap;justify-content:center;align-items:flex-end}
+  .wl-form input{
+    flex:1;min-width:240px;background:transparent;border:none;border-bottom:2px solid var(--red);
+    padding:10px 4px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;
+    font-size:15px;color:var(--red);outline:none;
+  }
+  .wl-form input::placeholder{color:rgba(123,30,58,.65)}
+  .wl-form input:focus{border-bottom-width:3px}
+  #wl-done{display:none;margin-top:20px;font-family:var(--script);font-size:24px;color:var(--red)}
+  .wl-note{margin-top:16px;font-size:13px;font-weight:600;opacity:.8}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--red);color:var(--cream);padding:44px 0 28px}
+  .foot{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .foot .fl{font-family:var(--logo);font-size:20px;line-height:1}
+  .foot nav{display:flex;gap:26px;flex-wrap:wrap}
+  .foot nav a{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:13px;color:var(--cream);text-decoration:none}
+  .foot nav a:hover{color:var(--pink-soft)}
+  .foot-bottom{margin-top:30px;padding-top:18px;border-top:1px solid rgba(246,236,216,.3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:500;opacity:.85}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top">COTTAGE<br>CORE</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#flavors">Flavors</a>
+      <a href="#reviews">Reviews</a>
+      <a href="https://www.instagram.com/cottagecore.cups" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <div class="nav-cta"><a class="pill" href="#waitlist">Join the waitlist</a></div>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero" id="top">
+  <!-- scalloped sticker, Cotto-style -->
+  <div class="blob" style="--s:min(190px,16vw);--tilt:-6deg;top:7%;left:4%">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M100 6c11 0 18 9 28 7s16-12 26-8 9 16 17 22 20 3 24 13-6 18-5 28 12 16 9 26-15 11-19 20 2 20-5 27-18 2-27 7-12 16-22 17-15-10-25-11-19 8-28 3-7-17-14-24-19-6-22-16 8-17 8-27-9-18-5-27 16-9 22-17 3-19 12-24 19 3 29 1 12-15 22-17z" fill="#a9cdd9" stroke="#7b1e3a" stroke-width="6"/>
+    </svg>
+    <div class="t" style="--r:-8deg">Protein<br>Packed<small>dairy goodness</small></div>
+  </div>
+  <div class="blob" style="--s:min(170px,14vw);--tilt:5deg;top:12%;right:5%">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M100 6c11 0 18 9 28 7s16-12 26-8 9 16 17 22 20 3 24 13-6 18-5 28 12 16 9 26-15 11-19 20 2 20-5 27-18 2-27 7-12 16-22 17-15-10-25-11-19 8-28 3-7-17-14-24-19-6-22-16 8-17 8-27-9-18-5-27 16-9 22-17 3-19 12-24 19 3 29 1 12-15 22-17z" fill="#f2a0b5" stroke="#7b1e3a" stroke-width="6"/>
+    </svg>
+    <div class="t" style="--r:7deg">Launching<br>Soon<small>waitlist open</small></div>
+  </div>
+
+  <div class="wrap">
+    <h1 class="giant-mark">COTTAGE<br>CORE</h1>
+    <p class="sub">A sweet new spin on a protein packed dairy product</p>
+    <div class="cta-row">
+      <a class="pill" href="#waitlist">Get Cottage Core</a>
+    </div>
+  </div>
+</section>
+
+<!-- awning band: flavors -->
+<section class="awning" id="flavors">
+  <div class="wrap">
+    <h2 class="reveal">Reimagining Dessert-Worthy Snacking</h2>
+    <div class="cards">
+      <div class="fcard reveal">
+        <!-- TODO: swap SVG for the real Strawberry Cheesecake tub photo -->
+        <svg class="tub" viewBox="0 0 240 220" aria-hidden="true">
+          <ellipse cx="120" cy="208" rx="78" ry="8" fill="rgba(92,19,43,.14)"/>
+          <path d="M52 66 h136 l-12 126 a14 14 0 0 1-14 12 H78 a14 14 0 0 1-14-12 Z" fill="#e77f9c" stroke="#7b1e3a" stroke-width="6"/>
+          <rect x="42" y="42" width="156" height="30" rx="15" fill="#d96687" stroke="#7b1e3a" stroke-width="5"/>
+          <path d="M66 104 h108 l-5 54 H71 Z" fill="#fbf4e4" stroke="#7b1e3a" stroke-width="5"/>
+          <text x="120" y="128" text-anchor="middle" font-family="Bungee,cursive" font-size="15" fill="#7b1e3a">COTTAGE</text>
+          <text x="120" y="146" text-anchor="middle" font-family="Bungee,cursive" font-size="15" fill="#7b1e3a">CORE</text>
+          <circle cx="92" cy="180" r="7" fill="#c1264e"/><circle cx="120" cy="185" r="7" fill="#c1264e"/><circle cx="148" cy="180" r="7" fill="#c1264e"/>
+        </svg>
+        <h3>Strawberry Cheesecake</h3>
+        <span class="status">current flavor</span>
+        <p>Smooth and creamy — great with just a spoon or with some graham crackers 🥄🍓🐄</p>
+        <a class="pill red" href="#waitlist">Notify me</a>
+      </div>
+      <div class="fcard reveal" style="transition-delay:.08s">
+        <svg class="tub" viewBox="0 0 240 220" aria-hidden="true">
+          <ellipse cx="120" cy="208" rx="78" ry="8" fill="rgba(92,19,43,.14)"/>
+          <path d="M52 66 h136 l-12 126 a14 14 0 0 1-14 12 H78 a14 14 0 0 1-14-12 Z" fill="#fbf4e4" stroke="#7b1e3a" stroke-width="6"/>
+          <rect x="42" y="42" width="156" height="30" rx="15" fill="#7b1e3a"/>
+          <path d="M66 104 h108 l-5 54 H71 Z" fill="#a9cdd9" stroke="#7b1e3a" stroke-width="5"/>
+          <text x="120" y="142" text-anchor="middle" font-family="Bungee,cursive" font-size="36" fill="#7b1e3a">?</text>
+        </svg>
+        <h3>Future Flavor</h3>
+        <span class="status">stay tuned…</span>
+        <p>Stay tuned for future flavors… 🤍 Follow the Instagram for sneak peeks.</p>
+        <a class="pill red" href="#waitlist">Notify me</a>
+      </div>
+      <div class="fcard reveal" style="transition-delay:.16s">
+        <svg class="tub" viewBox="0 0 240 220" aria-hidden="true">
+          <ellipse cx="120" cy="208" rx="78" ry="8" fill="rgba(92,19,43,.14)"/>
+          <path d="M52 66 h136 l-12 126 a14 14 0 0 1-14 12 H78 a14 14 0 0 1-14-12 Z" fill="#fbf4e4" stroke="#7b1e3a" stroke-width="6"/>
+          <rect x="42" y="42" width="156" height="30" rx="15" fill="#7b1e3a"/>
+          <path d="M66 104 h108 l-5 54 H71 Z" fill="#f2a482" stroke="#7b1e3a" stroke-width="5"/>
+          <text x="120" y="142" text-anchor="middle" font-family="Bungee,cursive" font-size="36" fill="#7b1e3a">?</text>
+        </svg>
+        <h3>Future Flavor</h3>
+        <span class="status">stay tuned…</span>
+        <p>Still in the test kitchen. The waitlist hears about it first.</p>
+        <a class="pill red" href="#waitlist">Notify me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- meet section -->
+<section class="meet" id="about">
+  <div class="wrap">
+    <h2 class="script-head reveal">Meet Cottage Core!</h2>
+    <div class="meet-grid">
+      <div class="eatwith reveal">
+        <span class="sh">Eat with…</span>
+        <ul>
+          <li>Just a spoon</li>
+          <li>Graham crackers</li>
+          <li>Your sweet tooth</li>
+        </ul>
+      </div>
+      <div class="meet-art reveal">
+        <!-- TODO: swap for the real cow mascot artwork -->
+        <svg viewBox="0 0 220 200" aria-hidden="true">
+          <ellipse cx="110" cy="188" rx="62" ry="8" fill="rgba(92,19,43,.15)"/>
+          <path d="M60 70 q-18-6 -20-24 q14 2 22 12 Z" fill="#fbf4e4" stroke="#7b1e3a" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M160 70 q18-6 20-24 q-14 2-22 12 Z" fill="#fbf4e4" stroke="#7b1e3a" stroke-width="5" stroke-linejoin="round"/>
+          <rect x="52" y="58" width="116" height="100" rx="46" fill="#fbf4e4" stroke="#7b1e3a" stroke-width="6"/>
+          <path d="M62 74 q14-14 30-6 q-4 18-22 20 q-10-4 -8-14 Z" fill="#2b2b2b"/>
+          <path d="M158 132 q4 18-12 24 q-14-8 -8-24 Z" fill="#2b2b2b"/>
+          <rect x="68" y="88" width="38" height="22" rx="10" fill="#1c1c1c" stroke="#7b1e3a" stroke-width="4"/>
+          <rect x="114" y="88" width="38" height="22" rx="10" fill="#1c1c1c" stroke="#7b1e3a" stroke-width="4"/>
+          <path d="M106 99 h8" stroke="#7b1e3a" stroke-width="4"/>
+          <ellipse cx="110" cy="136" rx="30" ry="20" fill="#f2a0b5" stroke="#7b1e3a" stroke-width="5"/>
+          <circle cx="99" cy="134" r="4" fill="#7b1e3a"/><circle cx="121" cy="134" r="4" fill="#7b1e3a"/>
+          <path d="M96 152 q14 8 28 0" stroke="#7b1e3a" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="checks reveal">
+        <div class="chk">More protein, zero compromise on your sweet tooth</div>
+        <div class="chk">Tastes like dessert</div>
+        <p class="note"><strong>Cottage Core</strong> was designed by a former collegiate athlete who wanted a snack that tastes like dessert without the compromise. 🥄🍓🐄</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- testimonials -->
+<section class="quotes" id="reviews">
+  <div class="wrap">
+    <h2 class="reveal">What People Are Saying…</h2>
+    <span class="sh reveal">straight from sampling tables &amp; pitch stages</span>
+    <div class="q-grid">
+      <blockquote class="quote reveal">
+        <p>When and where can I buy this? I brought your samples home to my family and they need it now</p>
+        <cite>— D1 Athlete</cite>
+      </blockquote>
+      <blockquote class="quote reveal" style="transition-delay:.08s">
+        <p>I've never tried cottage cheese, nor have I wanted to… but this exceeded my expectations.</p>
+        <cite>— Pitch Competition Judge</cite>
+      </blockquote>
+      <blockquote class="quote reveal" style="transition-delay:.16s">
+        <p>Give me more</p>
+        <cite>— Pitch Competition Judge</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- block-print band -->
+<section class="prints">
+  <div class="wrap">
+    <h2 class="reveal">If you're looking for your new favorite snack, you have come to the right place…</h2>
+    <div><a class="pill red reveal" href="#waitlist">Join the waitlist</a></div>
+    <div class="print-row reveal" aria-hidden="true">
+      <!-- block-print style strawberry -->
+      <svg viewBox="0 0 120 130"><path d="M60 122 C28 100 12 74 16 50 c3-16 18-24 30-18 5 2 10 7 14 13 4-6 9-11 14-13 12-6 27 2 30 18 4 24-12 50-44 72z" fill="#c1264e"/><path d="M60 30 c-2-10 2-20 10-26 2 8-1 18-10 26z" fill="#5f8f57"/><path d="M40 22 q20-8 40 0 l-8 14 q-12-6-24 0z" fill="#5f8f57"/><circle cx="45" cy="62" r="4" fill="#fbf4e4"/><circle cx="66" cy="52" r="4" fill="#fbf4e4"/><circle cx="76" cy="76" r="4" fill="#fbf4e4"/><circle cx="52" cy="88" r="4" fill="#fbf4e4"/></svg>
+      <!-- spoon with dollop -->
+      <svg viewBox="0 0 140 130"><path d="M28 96 q42-52 96-74 l6 10 q-50 26-90 72z" fill="#a9cdd9"/><ellipse cx="34" cy="100" rx="26" ry="20" transform="rotate(-30 34 100)" fill="#a9cdd9"/><path d="M26 92 q10-8 20 0 q6 6-2 12 q-10 6-18-2 q-4-6 0-10z" fill="#fbf4e4"/></svg>
+      <!-- graham cracker -->
+      <svg viewBox="0 0 130 130"><rect x="15" y="25" width="100" height="80" rx="10" fill="#d8964f"/><rect x="15" y="25" width="100" height="80" rx="10" fill="none" stroke="#b06f2e" stroke-width="5" stroke-dasharray="2 10"/><line x1="65" y1="30" x2="65" y2="100" stroke="#b06f2e" stroke-width="4"/><line x1="20" y1="65" x2="110" y2="65" stroke="#b06f2e" stroke-width="4"/><circle cx="42" cy="46" r="3" fill="#b06f2e"/><circle cx="88" cy="46" r="3" fill="#b06f2e"/><circle cx="42" cy="84" r="3" fill="#b06f2e"/><circle cx="88" cy="84" r="3" fill="#b06f2e"/></svg>
+      <!-- dip swirl -->
+      <svg viewBox="0 0 130 130"><path d="M65 8 c34 0 58 24 58 56 s-24 58-58 58 S8 96 8 64 31 8 65 8z" fill="#f2a0b5"/><path d="M65 26 c24 0 40 16 40 38 s-16 40-40 40 -40-16-40-38 c0-14 10-24 24-24 10 0 18 8 18 18 0 8-6 14-14 14" fill="none" stroke="#fbf4e4" stroke-width="10" stroke-linecap="round"/></svg>
+      <!-- cheesecake slice -->
+      <svg viewBox="0 0 140 130"><path d="M12 92 L118 44 q10 22-6 34 L26 112 q-14-4-14-20z" fill="#f3dfae"/><path d="M12 92 L118 44 l4 10 L18 100z" fill="#d8964f"/><path d="M96 38 q4-16 18-18 q2 12-8 20 z" fill="#5f8f57"/><circle cx="102" cy="46" r="10" fill="#c1264e"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- waitlist club band -->
+<section class="club" id="waitlist">
+  <div class="wrap">
+    <h2 class="reveal">Join the<span class="sc">Waitlist</span></h2>
+    <p class="reveal">You'll get an email right before we officially launch — so you don't have to wait any longer for your new favorite snack!</p>
+    <!--
+      TODO: connect your real signup backend.
+      Replace the JS handler below with your Google Form action URL or email
+      provider endpoint so signups keep flowing into the same list that sends
+      from sales@eatcottagecore.com. Until then, submissions open a pre-filled
+      email to sales@eatcottagecore.com as a fallback.
+    -->
+    <form class="wl-form reveal" id="wl-form">
+      <input type="email" id="wl-email" name="email" required placeholder="Email" aria-label="Email address">
+      <button class="pill red" type="submit">Subscribe</button>
+    </form>
+    <p class="wl-note reveal">Sneak peeks on Instagram while you wait — no spam, just snacks.</p>
+    <p id="wl-done">Almost there — send the email that just opened &amp; you're on the list!</p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <div class="fl">COTTAGE<br>CORE</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#flavors">Flavors</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#waitlist">Waitlist</a>
+        <a href="https://www.instagram.com/cottagecore.cups" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:sales@eatcottagecore.com">Contact</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cottage Core · eatcottagecore.com</span>
+      <span>A sweet new spin on a protein packed dairy product 🥄🍓🐄</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveals
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // waitlist form — mailto fallback until the real endpoint is connected (see TODO above)
+  document.getElementById('wl-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('wl-email').value.trim();
+    if (!email) return;
+    location.href = 'mailto:sales@eatcottagecore.com'
+      + '?subject=' + encodeURIComponent('Waitlist signup')
+      + '&body=' + encodeURIComponent(`Please add ${email} to the Cottage Core waitlist.`);
+    document.getElementById('wl-done').style.display = 'block';
+  });
+</script>
+</body>
+</html>
