@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cottage Core — Cottage Cheese Snack Cups</title>
+<meta name="description" content="Cottage Core is reimagining snacking with cottage cheese cups. Launching soon — join the waitlist and be first to taste it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#7b1e3a;          /* brand burgundy */
+    --ink-deep:#5c132b;
+    --cream:#f6f4f1;        /* brand cream */
+    --paper:#fffdf9;
+    --putty:#f0ede8;
+    --straw:#f4c95d;        /* flavor accents */
+    --petal:#f2a0b5;
+    --sage:#9db787;
+    --radius:22px;
+    --display:"Bungee","Arial Black","Franklin Gothic Medium",sans-serif;
+    --body:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  ::selection{background:var(--ink);color:var(--cream)}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;line-height:1.6;
+    overflow-x:hidden;
+  }
+  /* grain */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- announcement marquee ---------- */
+  .ticker{
+    background:var(--ink);color:var(--cream);
+    overflow:hidden;white-space:nowrap;
+    padding:9px 0;font-family:var(--display);font-size:12px;letter-spacing:.14em;
+  }
+  .ticker-track{display:inline-flex;gap:0;animation:tick 28s linear infinite}
+  .ticker span{display:inline-block;padding:0 18px}
+  .ticker i{font-style:normal;color:var(--straw)}
+  @keyframes tick{to{transform:translateX(-50%)}}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--cream) 88%,transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
+  .logo{font-family:var(--display);font-size:clamp(18px,2.6vw,26px);color:var(--ink);text-decoration:none;line-height:1;letter-spacing:.02em}
+  .logo small{display:block;font-family:var(--body);font-weight:700;font-size:9px;letter-spacing:.34em;margin-top:3px}
+  .nav-links{display:flex;gap:26px;align-items:center;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+  .nav-links a{color:var(--ink);text-decoration:none;position:relative}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--ink);transition:right .25s}
+  .nav-links a:not(.btn):hover::after{right:0}
+  .nav-links a.btn{color:var(--cream)}
+  .btn{
+    display:inline-block;background:var(--ink);color:var(--cream);
+    font-family:var(--display);font-size:13px;letter-spacing:.05em;
+    padding:12px 22px;border-radius:999px;text-decoration:none;border:2px solid var(--ink);
+    transition:transform .15s, box-shadow .15s;box-shadow:0 4px 0 var(--ink-deep);
+    cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--ink-deep)}
+  .btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink-deep)}
+  .btn.ghost{background:transparent;color:var(--ink);box-shadow:0 4px 0 var(--ink)}
+  @media(max-width:680px){.nav-links a:not(.btn){display:none}}
+
+  /* ---------- hero / collection header ---------- */
+  .hero{position:relative;padding:84px 0 40px;text-align:center}
+  .hero .kicker{
+    display:inline-block;font-weight:800;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    border:2px solid var(--ink);border-radius:999px;padding:7px 16px;margin-bottom:22px;background:var(--paper);
+    animation:pop .6s .1s both;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-size:clamp(44px,9vw,110px);
+    line-height:.98;letter-spacing:.01em;
+    animation:rise .7s .2s both;
+  }
+  .hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--ink)}
+  .hero p.lede{max-width:560px;margin:22px auto 0;font-size:clamp(16px,2vw,19px);font-weight:500;animation:rise .7s .35s both}
+  .hero .cta-row{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:rise .7s .5s both}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+
+  /* gingham strips */
+  .gingham{
+    height:26px;
+    background:
+      repeating-linear-gradient(90deg,rgba(123,30,58,.28) 0 13px,transparent 13px 26px),
+      repeating-linear-gradient(0deg,rgba(123,30,58,.28) 0 13px,transparent 13px 26px),
+      var(--paper);
+    border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  }
+
+  /* floating stickers */
+  .sticker{
+    position:absolute;font-family:var(--display);font-size:12px;letter-spacing:.04em;
+    background:var(--straw);border:2px solid var(--ink);border-radius:999px;
+    padding:10px 16px;box-shadow:3px 3px 0 var(--ink);
+    animation:float 5s ease-in-out infinite;white-space:nowrap;
+  }
+  .sticker.s2{background:var(--petal);animation-delay:-1.6s}
+  .sticker.s3{background:var(--sage);animation-delay:-3.2s}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,-6deg))}50%{transform:translateY(-12px) rotate(var(--r,-6deg))}}
+  @media(max-width:900px){.sticker{display:none}}
+
+  /* ---------- flavor grid ---------- */
+  .shop{padding:40px 0 30px}
+  .shop-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:26px;flex-wrap:wrap}
+  .shop-head h2{font-family:var(--display);font-size:clamp(26px,4vw,40px)}
+  .shop-head p{font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
+  .card{
+    background:var(--card,var(--straw));
+    border:2px solid var(--ink);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .2s, box-shadow .2s;
+    box-shadow:0 6px 0 var(--ink);
+  }
+  .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 12px 0 var(--ink)}
+  .card .art{position:relative;aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden}
+  .card .art::before{
+    content:"";position:absolute;inset:0;opacity:.35;
+    background:repeating-radial-gradient(circle at 50% 120%,transparent 0 44px,rgba(255,255,255,.5) 44px 46px);
+  }
+  .card svg.cup{width:62%;filter:drop-shadow(0 10px 0 rgba(92,19,43,.18));transition:transform .3s}
+  .card:hover svg.cup{transform:translateY(-6px) rotate(2deg) scale(1.03)}
+  .badge{
+    position:absolute;top:14px;left:14px;background:var(--paper);border:2px solid var(--ink);
+    font-family:var(--display);font-size:10px;letter-spacing:.1em;padding:7px 12px;border-radius:999px;transform:rotate(-4deg);
+  }
+  .card .meta{background:var(--paper);border-top:2px solid var(--ink);padding:18px 20px 22px;flex:1;display:flex;flex-direction:column;gap:6px}
+  .card h3{font-family:var(--display);font-size:19px;letter-spacing:.02em}
+  .card .desc{font-size:14.5px;font-weight:500;color:var(--ink-deep);flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+  .card .price{font-family:var(--display);font-size:14px;letter-spacing:.06em}
+  .card .btn{font-size:11px;padding:10px 16px}
+
+  /* ---------- big marquee divider ---------- */
+  .divider{margin:70px 0 0;background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);overflow:hidden;padding:16px 0}
+  .divider .ticker-track{animation-duration:20s;font-size:clamp(20px,3.4vw,34px);color:var(--ink);font-family:var(--display)}
+  .divider span{padding:0 26px}
+  .divider .o{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+
+  /* ---------- story ---------- */
+  .story{padding:90px 0;position:relative}
+  .story .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  @media(max-width:860px){.story .inner{grid-template-columns:1fr}}
+  .story h2{font-family:var(--display);font-size:clamp(30px,4.6vw,52px);line-height:1.08;margin-bottom:20px}
+  .story p{font-size:17.5px;font-weight:500;margin-bottom:14px;max-width:54ch}
+  .story .frame{
+    background:var(--petal);border:2px solid var(--ink);border-radius:var(--radius);
+    box-shadow:8px 8px 0 var(--ink);padding:34px;display:grid;place-items:center;aspect-ratio:4/3;position:relative;transform:rotate(1.5deg);
+  }
+  .story .frame svg{width:70%}
+
+  /* ---------- waitlist ---------- */
+  .waitlist{
+    background:var(--ink);color:var(--cream);padding:96px 0;position:relative;overflow:hidden;
+  }
+  .waitlist::before{
+    content:"";position:absolute;inset:0;opacity:.12;
+    background:
+      repeating-linear-gradient(90deg,var(--cream) 0 13px,transparent 13px 26px),
+      repeating-linear-gradient(0deg,var(--cream) 0 13px,transparent 13px 26px);
+    mask-image:linear-gradient(180deg,black,transparent 45%,transparent 55%,black);
+  }
+  .waitlist .wrap{position:relative;text-align:center}
+  .waitlist h2{font-family:var(--display);font-size:clamp(34px,6vw,72px);line-height:1.02}
+  .waitlist h2 em{font-style:normal;color:var(--straw)}
+  .waitlist p{max-width:520px;margin:18px auto 0;font-weight:500;font-size:18px}
+  .wl-form{margin:34px auto 0;display:flex;gap:12px;max-width:520px;flex-wrap:wrap;justify-content:center}
+  .wl-form input{
+    flex:1;min-width:240px;padding:16px 22px;border-radius:999px;border:2px solid var(--cream);
+    background:transparent;color:var(--cream);font-family:var(--body);font-weight:600;font-size:16px;outline:none;
+  }
+  .wl-form input::placeholder{color:color-mix(in srgb,var(--cream) 60%,transparent)}
+  .wl-form input:focus{background:rgba(255,255,255,.08)}
+  .wl-form .btn{background:var(--straw);color:var(--ink);border-color:var(--straw);box-shadow:0 4px 0 #b98f2e;font-size:14px;padding:16px 28px}
+  .wl-form .btn:hover{box-shadow:0 6px 0 #b98f2e}
+  .wl-note{margin-top:16px;font-size:13px;opacity:.75;font-weight:500}
+  #wl-done{display:none;margin-top:22px;font-family:var(--display);font-size:16px;color:var(--straw)}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--ink-deep);color:var(--cream);padding:60px 0 30px;overflow:hidden}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:40px}
+  .foot-top .col h4{font-family:var(--display);font-size:13px;letter-spacing:.1em;margin-bottom:12px;color:var(--straw)}
+  .foot-top a{display:block;color:var(--cream);text-decoration:none;font-weight:600;font-size:15px;margin-bottom:8px}
+  .foot-top a:hover{color:var(--petal)}
+  .giant{
+    font-family:var(--display);text-align:center;line-height:.9;user-select:none;
+    font-size:clamp(52px,12.5vw,170px);color:transparent;-webkit-text-stroke:2px rgba(246,244,241,.55);
+    white-space:nowrap;
+  }
+  .foot-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(246,244,241,.25);margin-top:34px;padding-top:20px;font-size:13px;font-weight:500;opacity:.8}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- announcement bar -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tick1"></div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top">COTTAGE CORE<small>SNACK CUPS</small></a>
+    <nav class="nav-links">
+      <a href="#flavors">Flavors</a>
+      <a href="#story">About</a>
+      <a href="https://www.instagram.com/cottagecore.cups" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="#waitlist">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero" id="top">
+  <div class="sticker" style="--r:-8deg;top:120px;left:6vw">REAL COTTAGE CHEESE</div>
+  <div class="sticker s2" style="--r:6deg;top:110px;right:7vw">LAUNCHING SOON</div>
+  <div class="sticker s3" style="--r:-4deg;top:360px;left:8vw">CUP-SIZED</div>
+  <div class="wrap">
+    <span class="kicker">Shop All · Pre-launch</span>
+    <h1>YOUR NEW<br><em>FAVORITE</em> SNACK</h1>
+    <p class="lede">Cottage Core is reimagining snacking — cottage cheese, cup-sized. Fresh flavors are on the way, and the waitlist tastes them first.</p>
+    <div class="cta-row">
+      <a class="btn" href="#waitlist">Get first taste →</a>
+      <a class="btn ghost" href="#flavors">Peek the flavors</a>
+    </div>
+  </div>
+</section>
+
+<div class="gingham" aria-hidden="true"></div>
+
+<!-- flavor grid -->
+<main class="shop wrap" id="flavors">
+  <div class="shop-head reveal">
+    <h2>THE FLAVOR LINEUP</h2>
+    <p>03 cups · revealing at launch</p>
+  </div>
+  <div class="grid">
+    <div class="card reveal" style="--card:var(--straw)">
+      <div class="art">
+        <span class="badge">COMING SOON</span>
+        <svg class="cup" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M45 70 h110 l-12 100 a12 12 0 0 1-12 11 H69 a12 12 0 0 1-12-11 Z" fill="#fffdf9" stroke="#7b1e3a" stroke-width="5"/>
+          <rect x="38" y="52" width="124" height="22" rx="11" fill="#7b1e3a"/>
+          <path d="M55 105 h90 l-4 34 H59 Z" fill="#f4c95d" stroke="#7b1e3a" stroke-width="4"/>
+          <text x="100" y="130" text-anchor="middle" font-family="Bungee,cursive" font-size="30" fill="#7b1e3a">?</text>
+          <circle cx="78" cy="163" r="4" fill="#7b1e3a"/><circle cx="100" cy="166" r="4" fill="#7b1e3a"/><circle cx="122" cy="163" r="4" fill="#7b1e3a"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <h3>FLAVOR Nº 01</h3>
+        <p class="desc">Top secret for now. All we can say: real cottage cheese, and it slaps.</p>
+        <div class="row"><span class="price">TBA</span><a class="btn" href="#waitlist">Notify me</a></div>
+      </div>
+    </div>
+    <div class="card reveal" style="--card:var(--petal);transition-delay:.08s">
+      <div class="art">
+        <span class="badge">COMING SOON</span>
+        <svg class="cup" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M45 70 h110 l-12 100 a12 12 0 0 1-12 11 H69 a12 12 0 0 1-12-11 Z" fill="#fffdf9" stroke="#7b1e3a" stroke-width="5"/>
+          <rect x="38" y="52" width="124" height="22" rx="11" fill="#7b1e3a"/>
+          <path d="M55 105 h90 l-4 34 H59 Z" fill="#f2a0b5" stroke="#7b1e3a" stroke-width="4"/>
+          <text x="100" y="130" text-anchor="middle" font-family="Bungee,cursive" font-size="30" fill="#7b1e3a">?</text>
+          <circle cx="78" cy="163" r="4" fill="#7b1e3a"/><circle cx="100" cy="166" r="4" fill="#7b1e3a"/><circle cx="122" cy="163" r="4" fill="#7b1e3a"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <h3>FLAVOR Nº 02</h3>
+        <p class="desc">Still under wraps. Follow the Instagram for sneak peeks while you wait.</p>
+        <div class="row"><span class="price">TBA</span><a class="btn" href="#waitlist">Notify me</a></div>
+      </div>
+    </div>
+    <div class="card reveal" style="--card:var(--sage);transition-delay:.16s">
+      <div class="art">
+        <span class="badge">COMING SOON</span>
+        <svg class="cup" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M45 70 h110 l-12 100 a12 12 0 0 1-12 11 H69 a12 12 0 0 1-12-11 Z" fill="#fffdf9" stroke="#7b1e3a" stroke-width="5"/>
+          <rect x="38" y="52" width="124" height="22" rx="11" fill="#7b1e3a"/>
+          <path d="M55 105 h90 l-4 34 H59 Z" fill="#9db787" stroke="#7b1e3a" stroke-width="4"/>
+          <text x="100" y="130" text-anchor="middle" font-family="Bungee,cursive" font-size="30" fill="#7b1e3a">?</text>
+          <circle cx="78" cy="163" r="4" fill="#7b1e3a"/><circle cx="100" cy="166" r="4" fill="#7b1e3a"/><circle cx="122" cy="163" r="4" fill="#7b1e3a"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <h3>FLAVOR Nº 03</h3>
+        <p class="desc">The one we can't stop eating in the test kitchen. You'll see.</p>
+        <div class="row"><span class="price">TBA</span><a class="btn" href="#waitlist">Notify me</a></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- marquee divider -->
+<div class="divider" aria-hidden="true">
+  <div class="ticker-track" id="tick2"></div>
+</div>
+
+<!-- story -->
+<section class="story" id="story">
+  <div class="wrap inner">
+    <div class="reveal">
+      <h2>COTTAGE CHEESE, BUT MAKE IT CORE.</h2>
+      <p>We're on a mission to turn cottage cheese into the snack you actually crave — creamy, fresh, and packed into cups that go wherever you do.</p>
+      <p>We're putting the finishing touches on the first run right now. Sign up and you'll get one email, right before launch — so you don't have to wait a minute longer than necessary.</p>
+      <a class="btn" href="#waitlist" style="margin-top:10px">Join the waitlist</a>
+    </div>
+    <div class="frame reveal">
+      <svg viewBox="0 0 220 200" aria-hidden="true">
+        <path d="M40 60 h140 l-15 118 a14 14 0 0 1-14 12 H69 a14 14 0 0 1-14-12 Z" fill="#fffdf9" stroke="#7b1e3a" stroke-width="6"/>
+        <rect x="32" y="40" width="156" height="26" rx="13" fill="#7b1e3a"/>
+        <path d="M52 100 h116 l-5 42 H57 Z" fill="#f4c95d" stroke="#7b1e3a" stroke-width="5"/>
+        <text x="110" y="131" text-anchor="middle" font-family="Bungee,cursive" font-size="17" fill="#7b1e3a">COTTAGE</text>
+        <ellipse cx="110" cy="30" rx="26" ry="8" fill="none" stroke="#7b1e3a" stroke-width="4" stroke-dasharray="6 6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- waitlist -->
+<section class="waitlist" id="waitlist">
+  <div class="wrap">
+    <h2 class="reveal">DON'T WAIT.<br><em>WAITLIST.</em></h2>
+    <p class="reveal">One email, right before we launch. Sneak peeks on Instagram in the meantime. That's it — no spam, just snacks.</p>
+    <!--
+      TODO: connect your real signup backend.
+      Replace the JS handler below with your Google Form action URL or email
+      provider endpoint so signups keep flowing into the same list that sends
+      from sales@eatcottagecore.com. Until then, submissions open a pre-filled
+      email to sales@eatcottagecore.com as a fallback.
+    -->
+    <form class="wl-form reveal" id="wl-form">
+      <input type="email" id="wl-email" name="email" required placeholder="you@example.com" aria-label="Email address">
+      <button class="btn" type="submit">Join the waitlist</button>
+    </form>
+    <p class="wl-note reveal">You'll get an email right before we officially launch.</p>
+    <p id="wl-done">🧀 Almost there — send the email that just opened and you're on the list!</p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="col">
+        <h4>COTTAGE CORE</h4>
+        <a href="#flavors">Flavors</a>
+        <a href="#story">About</a>
+        <a href="#waitlist">Waitlist</a>
+      </div>
+      <div class="col">
+        <h4>FOLLOW ALONG</h4>
+        <a href="https://www.instagram.com/cottagecore.cups" target="_blank" rel="noopener">Instagram — @cottagecore.cups</a>
+        <a href="mailto:sales@eatcottagecore.com">sales@eatcottagecore.com</a>
+      </div>
+      <div class="col">
+        <h4>THE FINE PRINT</h4>
+        <a href="#waitlist">Launching soon</a>
+        <a href="#top">eatcottagecore.com</a>
+      </div>
+    </div>
+    <div class="giant" aria-hidden="true">COTTAGE&nbsp;CORE</div>
+    <div class="foot-bottom">
+      <span>© 2026 Cottage Core. All rights reserved.</span>
+      <span>Made with real cottage cheese &amp; love.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // marquee content
+  const line1 = `<span>LAUNCHING SOON</span><span>·</span><span><i>JOIN THE WAITLIST</i></span><span>·</span><span>REAL COTTAGE CHEESE</span><span>·</span><span><i>CUP-SIZED SNACKING</i></span><span>·</span>`;
+  const line2 = `<span>COTTAGE</span><span class="o">CORE</span><span>COTTAGE</span><span class="o">CORE</span><span>COTTAGE</span><span class="o">CORE</span><span>COTTAGE</span><span class="o">CORE</span>`;
+  document.getElementById('tick1').innerHTML = line1.repeat(4);
+  document.getElementById('tick2').innerHTML = line2.repeat(3);
+
+  // scroll reveals
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // waitlist form — mailto fallback until the real endpoint is connected (see TODO above)
+  document.getElementById('wl-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('wl-email').value.trim();
+    if (!email) return;
+    location.href = 'mailto:sales@eatcottagecore.com'
+      + '?subject=' + encodeURIComponent('Waitlist signup')
+      + '&body=' + encodeURIComponent(`Please add ${email} to the Cottage Core waitlist.`);
+    document.getElementById('wl-done').style.display = 'block';
+  });
+</script>
+</body>
+</html>
